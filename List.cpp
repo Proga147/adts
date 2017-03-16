@@ -10,6 +10,7 @@ class List::Node //self-referential Node class
 	public:
 	   int data = 0;
 	   Node* link = nullptr;
+	   int num_elements;
 	   //link is a data member which is a pointer 
 	   //to an object of the same type (i.e. Node)
 	
@@ -60,7 +61,7 @@ void List::insert(int val, int k)
  }
 
 void List::remove(int k)
-{
+{   int val;
 	if (k < 1 or k > num_elements)//if the location is invalid 
 	     throw out_of_range("List::remove("+to_string(val)+", " +to_string(k)+") failed. (valid indices are 1 to "+to_string(num_elements)+")");//throw an "out_of_range" exception
 	
@@ -90,6 +91,12 @@ void List::remove(int k)
 	delete delPtr;
 	num_elements--;
 	}
+void List::display( ) {
+cout<<"The values in the list are : ";
+for(Node* currptr=frontPtr; currptr !=nullptr; currptr=currptr->link){
+cout<< currptr->data<<" ";}
+}
+
 	
 	//Implementations of missing operations
 	
